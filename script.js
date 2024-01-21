@@ -2,7 +2,10 @@ const screen = document.querySelector('.screen')
 const numberKeys = [...document.querySelectorAll('.numberKeys')]
 const operateKeys = [...document.querySelectorAll('.key-event')]
 const enter = document.querySelector('.enter')
-
+const clearBtn = document.querySelector('#clear')
+const deleteBtn = document.querySelector('#delete')
+const allClearBtn = document.querySelector('#allClear')
+ console.log(allClearBtn)
 
 
 const calc = {
@@ -19,29 +22,43 @@ keyListener()
 definer()
 equals()
 
+clearBtn.addEventListener('click', () => { 
+    // if(calc.firstNumber != ''){
+    //     screen.classList.remove()
+    //     calc.firstNumber = 0
+    //     return display()
+    // }
+    calc.secondNumber = 0
+    console.log('calc')
+    return display()
+})
+
+allClearBtn.addEventListener('click', () => {
+    calc.firstNumber = ''
+    calc.secondNumber = ''
+    calc.operation = ''
+    calc.result = 0
+    // screen.classList.remove('screen-display')
+    return display()
+})
 
 
-
+//* Listens Numbers
 function keyListener(){
     numberKeys.forEach((key) => {
         key.addEventListener('click', () => {
             calc.keyListener += (key.innerText)
-
+            console.log(calc)
             if(calc.firstNumber){
                 calc.secondNumber = calc.keyListener
                 console.log(calc)
             }
-
-
             display()
         })
     })
 }
 
-// function firstNumber(){
-//     calc.firstNumber = calc.keyListener
-//     calc.keyListener = ''
-// }
+
 
 
 function definer(){
@@ -49,20 +66,22 @@ function definer(){
 
         opKey.addEventListener('click', () => {
                 screen.classList.add('screen-display')
+                    if(calc.firstNumber){
+                        calc.keyListener = ''
+                    }
+                    else{
                     calc.firstNumber = calc.keyListener
                     calc.keyListener = ''
-
+                    }
                     calc.operation = opKey.innerText
                     console.log(calc)
-                    return screen.innerHTML = display()
+                    return display()
                 
             
             }
         )
     })
 }
-
-
 
 function operate(operator, firstNumber, secondNumber){
     operator = calc.operation
@@ -88,10 +107,9 @@ function operate(operator, firstNumber, secondNumber){
     }
 }
 
-
 function display(){
 
-    if(calc.firstNumber){
+    if(calc.firstNumber != ''){
         return screen.innerHTML = 
         `
             <span class="first-number">${calc.firstNumber}
@@ -102,6 +120,7 @@ function display(){
     }
 
     else{
+        screen.classList.remove('screen-display')
         return  screen.innerText = calc.keyListener
     }
 }
@@ -109,6 +128,9 @@ function display(){
 function equals(){
     enter.addEventListener('click', () => {
         operate()
+        calc.firstNumber = calc.result
+        calc.secondNumber = ''
+        calc.keyListener = ''
         console.log(calc)
         return screen.innerHTML = 
         `
@@ -118,9 +140,6 @@ function equals(){
         `
     })
 }
-
-
-
 
 function add(x, y){
     return  Number(x) + Number (y)
@@ -137,25 +156,3 @@ function multiply(x,y){
 function divide (x,y){
     return (x / y).toFixed(2)
 }
-
-
-
-
-
-
-//function operate(operator){
-    //     operator = calc.operation
-    //     switch(operator){
-    //         case '+':
-    //             return calc.result = add(calc.firstNumber, calc.secondNumber);
-    //         case '-':
-    //             return subtract(calc.firstNumber, calc.secondNumber);
-    //         case 'x':
-    //                 return subtract(calc.firstNumber, calc.secondNumber);
-    //         case '/':
-    //             return subtract(calc.firstNumber, calc.secondNumber);
-    //         case '=':
-    //             return console.log('D')
-    //     }
-    // console.log(calc.result)
-    // }
