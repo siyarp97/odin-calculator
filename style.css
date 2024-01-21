@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -19,13 +21,17 @@ main{
 .calc-frame{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+
     margin-top: 20px;
     width: 450px;
-    height: 600px;
+    height: 650px;
     background-color: #1C2D6A;
+    border-right: 10px solid #121e474e;
+    border-bottom: 10px solid #121e474e;
+    border-left: 10px solid #263878;
+    border-top: 10px solid #263878;
     border-radius: 45px;
-    padding: 50px 40px;
+    padding: 40px 40px;
     box-shadow: 18px 18px 8.4px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -33,21 +39,55 @@ main{
     width: 100%;
     height: 4rem;
     background: #BFBEBE;
-    padding: 10px 15px;
+    padding: 7px 14px;
+    border: 2px solid #7c7b7b;
+    
 }
 
+
+/** Display */
 .screen{
     width: 100%;
     height: 100%;
     background: #D0D0D0;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0px 20px;
+    border: 2px solid #b5b5b5;
+    color: rgb(64, 64, 64);
+    font-family: 'Orbitron', sans-serif;
+
 }
+
+.screen-display{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.operator{
+    margin-left: 10px;
+}
+
+
+
+/** Display End*/
+
+
+
+
+
+
+
+
 
 .keys{
     display: flex;
     flex-direction: column;
-
     justify-content: space-around;
-    margin-top: 30px;
+    margin-top: 60px;
     flex: 1;
     width: 100%;
 }
@@ -60,23 +100,43 @@ main{
 .key{
     height: 70px;
     width: 70px;
-    background: #D9D9D9;
     border-radius:100%;
+    position: relative;
+    background: #D9D9D9;
+    color: #616060;
+    box-shadow: 0px 3px 0px  #9d9d9d;
+    filter: drop-shadow(0px 5px rgba(0, 0, 0, 0.25));
+    z-index: 0;
     position: relative;
 }
 
-.key-event{
-    background: #F69F9F;
+
+.key:hover{
+    transition: .2s all ease;
+    cursor: pointer;
+    filter: none;
+    box-shadow:0px 0 3px inset;
+    color: #efefef;
+    background-color: #7a7a7a;
+    outline: none;
 }
 
+.key-event{
+    background: #F69F9F !important;
+    color: darkslategrey !important;
+}
+.key-enter{
+    background: rgb(250, 200, 107)
+}
 .row:first-child .key{
     background:#808080;
+    color: #efefef;
 }
 
-.row:first-child
 
-.row:last-child .key:nth-child(3){
-    background: rgb(185, 73, 73);
+.enter{
+    background: rgb(79, 68, 68);
+    color: rgb(31, 49, 86) !important;
 }
 
 .key span{
