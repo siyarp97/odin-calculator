@@ -125,9 +125,7 @@ main{
     background: #F69F9F !important;
     color: darkslategrey !important;
 }
-.key-enter{
-    background: rgb(250, 200, 107)
-}
+
 .row:first-child .key{
     background:#808080;
     color: #efefef;
@@ -135,8 +133,8 @@ main{
 
 
 .enter{
-    background: rgb(79, 68, 68);
-    color: rgb(31, 49, 86) !important;
+    background: rgba(214, 72, 72, 0.82);
+    color: rgb(213, 213, 213) !important;
 }
 
 .key span{
