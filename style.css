@@ -67,6 +67,7 @@ main{
 }
 
 
+
 .operator{
     margin-left: 10px;
 }
@@ -121,7 +122,7 @@ main{
     outline: none;
 }
 
-.key-event{
+.key-event, #clear, #delete, #allClear{
     background: #F69F9F !important;
     color: darkslategrey !important;
 }
