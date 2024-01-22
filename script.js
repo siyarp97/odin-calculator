@@ -18,11 +18,9 @@ const calc = {
 }
 
 
-
 keyListener()
 definer()
 equals()
-
 
 
 clearBtn.addEventListener('click', () => { 
@@ -76,7 +74,7 @@ function keyListener(){
 
 
 
-
+//* Declares operation START // 
 function definer(){
     operateKeys.forEach((opKey) =>{
 
@@ -107,6 +105,11 @@ function definer(){
         )
     })
 }
+//* Declares operation START // 
+
+
+
+//* Operations START // 
 
 function operate(operator, firstNumber, secondNumber){
     operator = calc.operation
@@ -132,6 +135,12 @@ function operate(operator, firstNumber, secondNumber){
     }
 }
 
+//* Declares operation START // 
+
+
+
+//* Display On Screen START // 
+
 function display(){
 
     if(calc.firstNumber != ''){
@@ -150,6 +159,10 @@ function display(){
         return  screen.innerText = calc.keyListener
     }
 }
+
+//* Display On Screen END // 
+
+
 
 
 //* Equals Button kind of enter START //
