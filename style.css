@@ -10,11 +10,14 @@
 /* font-family: 'Quicksand', sans-serif;
 font-family: 'Roboto', sans-serif; */
 
+
 main{
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap:30px;
 }
 
 
@@ -22,7 +25,7 @@ main{
     display: flex;
     flex-direction: column;
 
-    margin-top: 20px;
+    /* margin-top: 20px; */
     width: 420px;
     height: 660px;
     background-color: #1C2D6A;
@@ -84,13 +87,6 @@ main{
 /** Display End*/
 
 
-
-
-
-
-
-
-
 .keys{
     display: flex;
     flex-direction: column;
@@ -147,6 +143,9 @@ main{
     color: #efefef;
 }
 .key-event:hover, #clear:hover, #delete:hover, #allClear:hover{
+    
+    color: #efefef !important;
+    background-color: #c49493 !important;
 
 }
 
@@ -165,4 +164,18 @@ main{
     font-size: 25px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+}
+
+footer{
+    display: flex;
+    margin-top: 40px;
+}
+
+footer a{
+   
+    text-decoration: none;
+    color: rgb(16, 40, 147);
+}
+footer a:hover{
+    color: darkgoldenrod;
 }
