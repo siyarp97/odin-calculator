@@ -5,9 +5,9 @@ const enter = document.querySelector('.enter')
 const clearBtn = document.querySelector('#clear')
 const deleteBtn = document.querySelector('#delete')
 const allClearBtn = document.querySelector('#allClear')
- console.log(allClearBtn)
 
 
+ 
 
 const calc = {
    keyListener : '',
@@ -27,8 +27,9 @@ clearBtn.addEventListener('click', () => {
     if(calc.firstNumber){
         calc.secondNumber = ''
         calc.keyListener = ''
-        return display()
+
     }
+    return display()
 
 })
 
@@ -50,21 +51,30 @@ deleteBtn.addEventListener('click',(arr) => {
     if(calc.secondNumber){
         calc.secondNumber = calc.keyListener
     }
+   else if(calc.firstNumber){
+        let strArr = Array.from(calc.firstNumber.toString())
+        strArr.pop()
+        calc.firstNumber = strArr.join('')
+        calc.keyListener = calc.firstNumber
+        calc.firstNumber = ''
+    }
 
     return display()
 })
 
 
-//* Listens Numbers
+
+
+//* Listens Numbers Start //
+
 function keyListener(){
     numberKeys.forEach((key) => {
         key.addEventListener('click', () => {
 
             calc.keyListener += (key.innerText)
-            console.log(calc)
+
             if(calc.firstNumber){
                 calc.secondNumber = calc.keyListener
-                console.log(calc)
                 return display()
             }
             return display()
@@ -72,9 +82,12 @@ function keyListener(){
     })
 }
 
+//* Listens Numbers End //
+
 
 
 //* Declares operation START // 
+
 function definer(){
     operateKeys.forEach((opKey) =>{
 
@@ -98,13 +111,14 @@ function definer(){
                         operate()
                         calc.secondNumber = ''
                     }
-                    console.log(calc)
+
                     return display()
                     
             }
         )
     })
 }
+
 //* Declares operation START // 
 
 
@@ -129,8 +143,20 @@ function operate(operator, firstNumber, secondNumber){
             return calc.result;
         
         case '/':
+            if(calc.secondNumber){
             calc.result = divide(calc.firstNumber, calc.secondNumber)
-            return calc.result;
+            return calc.result
+            }
+            else{
+                if(calc.keyListener == ''){
+                    return alert('Please Enter A Number to Divide')
+                }
+                else{
+                calc.secondNumber = calc.keyListener
+                calc.result = divide(calc.firstNumber, calc.secondNumber)
+                return calc.result;
+            }
+            }
         
     }
 }
@@ -144,7 +170,6 @@ function operate(operator, firstNumber, secondNumber){
 function display(){
 
     if(calc.firstNumber != ''){
-
         return screen.innerHTML = 
         `
             <span class="first-number">${calc.firstNumber}
@@ -170,9 +195,10 @@ function display(){
 function equals(){
     enter.addEventListener('click', () => {
         operate()
-        console.log(calc)
+
         if(!calc.firstNumber){
-            console.log('fi')
+
+            console.log('if çalışltı')
             calc.result = calc.keyListener
             return screen.innerHTML = 
             `
@@ -180,17 +206,23 @@ function equals(){
                 </span>
                 <span class="second-number">${calc.result}</span>
             `
+
         }
+
+
         else{
+            calc.firstNumber = calc.result
             calc.secondNumber = ''
             calc.keyListener = ''
+            console.log('else çalışltı', calc)
             return screen.innerHTML = 
             `
                 <span class="operator">=</span>
                 </span>
-                <span class="second-number">${calc.firstNumber}</span>
+                <span class="second-number">${calc.result}</span>
             `
         }
+
     })
 }
 
